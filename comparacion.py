@@ -6,13 +6,16 @@ import numpy as np
 def fun(x):
     return math.exp(-x)-x
 
-def biseccion(xi,xf,vparo):
+def metodo(xi,xf,error,metodo='falsa'):
     iter=[]
     verpa=[]
     error=100
     i=0
     while error>=vparo:
-        pm=(xi+xf)/2.0
+        if metodo=='biseccion':
+            pm=(xi+xf)/2.0
+        else:
+            pm=xi-(fun(xi)*(xf-xi))/(fun(xf)-fun(xi))
         #print (pm)
         iter.append(i+1)
         error=abs((vv-pm)*100/vv)
@@ -25,24 +28,6 @@ def biseccion(xi,xf,vparo):
             xi=pm
     return pm,iter,verpa
 
-def falsa(xi,xf,vparo):
-    iter=[]
-    verpa=[]
-    error=100
-    i=0
-    while error>=vparo:
-        pm=xi-(fun(xi)*(xf-xi))/(fun(xf)-fun(xi))
-        #print (pm)
-        iter.append(i+1)
-        error=abs((vv-pm)*100/vv)
-        verpa.append(error)
-        i=i+1
-        #aplicacion del teorea de Bolzano y eleccion de subintervalo
-        if (fun(xi)*fun(pm)<0):
-            xf=pm
-        else:
-            xi=pm
-    return pm,iter,verpa
 #valores contantes limite iniciao, limite final y numero de puntos de la grafica
 a,b,p=0,1,100
 #valor verdadero a considerar
