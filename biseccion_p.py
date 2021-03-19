@@ -27,8 +27,8 @@ while error>.005:
     exb.append(i+1)
     vpm.append(pm)
     error=abs((vv-pm)*100/vv)
-    eyb.append(abs((vv-pm)*100/vv))
-    print (pm,abs((vv-pm)*100/vv))
+    eyb.append(error)
+    print (pm,error)
     i=i+1
     #aplicacion del teorea de Bolzano y eleccion de subintervalo
     if (fun(a)*fun(pm)<0):
